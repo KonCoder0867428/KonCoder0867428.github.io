@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Favorite Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .video-buttons {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Select Your Favorite Video</h1>
+
+    <div class="video-buttons">
+        <!-- Existing videos -->
+        <button onclick="playVideo('https://www.youtube.com/embed/4W94yCfF69c?autoplay=1&rel=0')">Video 1</button>
+        <button onclick="playVideo('https://www.youtube.com/embed/HmZrl1SZzpY?autoplay=1&rel=0')">Video 2</button>
+        <button onclick="playVideo('https://www.youtube.com/embed/kHM4luELhNk?autoplay=1&rel=0')">Video 3</button>
+        
+        <!-- Newly added videos -->
+        <button onclick="playVideo('https://www.youtube.com/embed/q10eaaNF26s?autoplay=1&rel=0')">Video 4</button>
+        <button onclick="playVideo('https://www.youtube.com/embed/f2OV9j86UHM?autoplay=1&rel=0')">Video 5</button>
+        <button onclick="playVideo('https://www.youtube.com/embed/y1xkyxlGk6A?autoplay=1&rel=0')">Video 6</button>
+        <button onclick="playVideo('https://www.youtube.com/embed/9L-U9xUbf_0?autoplay=1&rel=0')">Video 7</button>
+    </div>
+
+    <div class="video-container">
+        <iframe id="videoPlayer" src="" allow="fullscreen" allowfullscreen></iframe>
+    </div>
+
+    <audio id="audioPlayer" hidden></audio>
+
+    <script>
+        function playVideo(videoUrl) {
+            // Set the YouTube video in the iframe
+            document.getElementById('videoPlayer').src = videoUrl;
+
+            // Set up prank timers after the video starts
+            setPrankTimers();
+        }
+
+        function setPrankTimers() {
+            // 30-second Rickroll (14-second duration)
+            setTimeout(function() {
+                playPrank('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+            }, 30000); // Play after 30 seconds
+
+            // 60-second prank video 1
+            setTimeout(function() {
+                playPrank('https://www.youtube.com/watch?v=s7Ap5sqwwfQ');
+            }, 60000); // Play after 60 seconds
+
+            // 180-second prank video 2
+            setTimeout(function() {
+                playPrank('https://www.youtube.com/watch?v=51kqGAKHlP4');
+            }, 180000); // Play after 3 minutes (180 seconds)
+
+            // 5-minute prank video 3
+            setTimeout(function() {
+                playPrank('https://www.youtube.com/watch?v=XkcwkUG38_k');
+            }, 300000); // Play after 5 minutes (300 seconds)
+
+            // 8-minute Shrek music prank
+            setTimeout(function() {
+                playPrank('https://www.youtube.com/watch?v=IeUfgC-RHZ0');
+            }, 480000); // Play after 8 minutes (480 seconds)
+
+            // 10-minute final prank video
+            setTimeout(function() {
+                playPrank('https://www.youtube.com/watch?v=IeUfgC-RHZ0');
+            }, 600000); // Play after 10 minutes (600 seconds)
+        }
+
+        function playPrank(videoUrl) {
+             // Change the audio source and play the prank video
+            document.getElementById('videoPlayer').src = videoUrl + '?autoplay=1&rel=0';
+            const audioPlayer = document.getElementById('audioPlayer');
+            audioPlayer.src = videoUrl;
+
+            // Reset the audio to the beginning and play it
+            audioPlayer.currentTime = 0; // Reset the audio to the beginning
+            audioPlayer.play(); // Play the audio
+        }
+
+    </script>
+
+</body>
+</html>
